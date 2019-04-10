@@ -10,14 +10,21 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import Group from '@material-ui/icons/Group';
+import Dns from '@material-ui/icons/Dns';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import AccountBox from '@material-ui/icons/AccountBox';
+import Description from '@material-ui/icons/Description';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import { Link as RouterLink } from 'react-router-dom'
+import Link from '@material-ui/core/Link';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+
 
 class NavBar extends Component {
 
@@ -56,7 +63,7 @@ class NavBar extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              Pedido
+              Gerenciamento de pedidos
             </Typography>
           </Toolbar>
         </AppBar>
@@ -88,30 +95,49 @@ class NavBar extends Component {
               </ListItem>
             ))}
           </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+          <List >
+            <ListItem button>
+              <ListItemIcon>
+                <Description color="primary" />
+              </ListItemIcon>
+              <ListItemText primary="Pedidos" />
+            </ListItem>
+            <Link to="/produtos">
+              <ListItem button>
+                <ListItemIcon>
+                  <Dns color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Produtos" />
               </ListItem>
-            ))}
+            </Link>
+            <ListItem button>
+              <ListItemIcon>
+                <Group color="primary" />
+              </ListItemIcon>
+              <ListItemText primary="Clientes" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <AccountBox color="primary" />
+              </ListItemIcon>
+              <ListItemText primary="Usuários" />
+            </ListItem>
           </List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-         <Typography paragraph>
-            Lorem ipsum 
+          <Typography paragraph>
+            Lorem ipsum
           </Typography>
-        
+
           <div>{this.props.children}</div>
-        </main>        
+        </main>
       </div>
     );
-    }
   }
+}
 
-  NavBar.propTypes = {
+NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
