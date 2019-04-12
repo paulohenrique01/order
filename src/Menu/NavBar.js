@@ -21,10 +21,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link as RouterLink } from 'react-router-dom'
-import Link from '@material-ui/core/Link';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
+import { asyncComponent } from 'react-async-component';
 
 class NavBar extends Component {
 
@@ -39,8 +38,23 @@ class NavBar extends Component {
     this.setState({ open: false });
   };
 
+ /* loadIcon = (iconName) => {   
+    console.log(iconName);
+    let resolved = require(`@material-ui-icons/${iconName}`).default
+    console.log(resolved);
+   if (!resolved) {
+        throw Error(`Could not find material-ui-icons/${iconName}`)
+    }
+
+    return React.createElement(resolved)
+  
+  };*/
+
+
   render() {
     const { classes, theme } = this.props;
+
+    
 
     return (
       <div className={classes.root}>
@@ -96,46 +110,50 @@ class NavBar extends Component {
             ))}
           </List>
           <List >
-            <ListItem button>
-              <ListItemIcon>
-                <Description color="primary" />
-              </ListItemIcon>
-              <ListItemText primary="Pedidos" />
-            </ListItem>
-            <Link to="/produtos">
+            <RouterLink to="/pedidos">
+              <ListItem button>
+                <ListItemIcon>
+                <Description/>
+                </ListItemIcon>
+                <ListItemText primary="Pedidos" />
+              </ListItem>
+            </RouterLink>
+            <RouterLink to="/produtos">
               <ListItem button>
                 <ListItemIcon>
                   <Dns color="primary" />
                 </ListItemIcon>
                 <ListItemText primary="Produtos" />
               </ListItem>
-            </Link>
-            <ListItem button>
-              <ListItemIcon>
-                <Group color="primary" />
-              </ListItemIcon>
-              <ListItemText primary="Clientes" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <AccountBox color="primary" />
-              </ListItemIcon>
-              <ListItemText primary="Usuários" />
-            </ListItem>
+            </RouterLink>
+            <RouterLink to="/clientes">
+              <ListItem button>
+                <ListItemIcon>
+                  <Group color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Clientes" />
+              </ListItem>
+            </RouterLink>
+            <RouterLink to="/usuarios">
+              <ListItem button>
+                <ListItemIcon>
+                  <AccountBox color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Usuários" />
+              </ListItem>
+            </RouterLink>
           </List>
         </Drawer>
         <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <Typography paragraph>
-            Lorem ipsum
-          </Typography>
-
+          <div className={classes.toolbar} />  
           <div>{this.props.children}</div>
         </main>
       </div>
     );
-  }
+  }  
 }
+
+
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './Menu/NavBar';
 import Cliente from './clientes/Cliente';
 import Pedido from './pedidos/Pedido';
@@ -13,17 +12,20 @@ class App extends Component {
   render() {
 
     return (      
-    
+      <Router>
+       
+       
         <NavBar>
-          <Router>
+        
             <Route path="/" exact component={Cliente} />
             <Route path="/pedidos" component={Pedido} />
             <Route path="/produtos" component={Produto} />
             <Route path="/clientes" component={Cliente} />
             <Route path="/usuarios" component={Usuario} />
-          </Router>
+         
 
         </NavBar>
+         </Router>
      
     );
   }
