@@ -7,29 +7,41 @@ import Pedido from './pedidos/Pedido';
 import Produto from './produtos/Produto';
 import Usuario from './usuarios/Usuario';
 
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { blue } from '@material-ui/core/colors';
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: blue,
+    secondary: {
+      main: '#FFC413',
+    },
+  }
+});
+
+
 class App extends Component {
 
   render() {
-
-    return (      
-      <Router>
-       
-       
+    return (
+      <MuiThemeProvider theme={theme}>
         <NavBar>
-        
+          <Router>
             <Route path="/" exact component={Cliente} />
             <Route path="/pedidos" component={Pedido} />
             <Route path="/produtos" component={Produto} />
             <Route path="/clientes" component={Cliente} />
             <Route path="/usuarios" component={Usuario} />
-         
 
+          </Router>
         </NavBar>
-         </Router>
-     
+      </MuiThemeProvider>
     );
   }
 }
 
 
+
 export default App;
+

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ClienteFilter from './ClienteFilter';
 
 class Cliente extends Component {
 
@@ -7,8 +8,8 @@ class Cliente extends Component {
    
     return (      
      <div>
-       <p>Cadastro de cientes</p>
-
+        <p>Cadastro de clientes</p>
+        <ClienteFilter />
      </div>
              
    
