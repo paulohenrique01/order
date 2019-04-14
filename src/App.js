@@ -26,16 +26,18 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
+       <Router>
         <NavBar>
-          <Router>
+         
             <Route path="/" exact component={Cliente} />
             <Route path="/pedidos" component={Pedido} />
             <Route path="/produtos" component={Produto} />
             <Route path="/clientes" component={Cliente} />
             <Route path="/usuarios" component={Usuario} />
 
-          </Router>
+       
         </NavBar>
+        </Router>
       </MuiThemeProvider>
     );
   }

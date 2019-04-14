@@ -23,7 +23,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Link as RouterLink } from 'react-router-dom'
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import { asyncComponent } from 'react-async-component';
 
 class NavBar extends Component {
 
