@@ -1,35 +1,37 @@
 
 import React, { Component } from 'react';
 import { TextField, withStyles, Button, Icon } from '@material-ui/core';
+import classNames from 'classnames';
 
+const styles = theme => ({    
+    leftIcon: {
+      marginRight: theme.spacing.unit,
+    },
+    
+    iconSmall: {
+      fontSize: 20,
+    },
+  });
 class ClienteFilter extends Component {
     constructor(props) {
         super(props);
         this.state = {
             filter: {}
         };
-
-        this.handlePesquisar = this.handlePesquisar.bind(this);
     }
     
 
-    onChangeNameFilter = (event) => {
+    handleInputTextChange = (event) => {
+        const target = event.target;
+        const name = target.name;
         this.setState({
           filter: {
             ...this.state.filter,
-            name: event.target.value
+            [name]: target.value
           }
         });        
     }
-
-    onChangeCpfFilter = (event) => {
-        this.setState({
-            filter: {
-                ...this.state.filter,
-                cpf: event.target.value
-            }
-        });
-    }
+  
     handlePesquisar = () => {
         alert(JSON.stringify(this.state.filter));
     }
@@ -40,32 +42,33 @@ class ClienteFilter extends Component {
             <form className={classes.container} noValidate autoComplete="off">
                 <TextField                  
                     label="Nome"
+                    name="name"
                     className={classes.textField}
                     value={this.state.filter.name}
-                    onChange={this.onChangeNameFilter}
+                    onChange={this.handleInputTextChange}
                     margin="normal"
                 />
                 <TextField                    
                     label="CPF"
+                    name="cpf"
                     className={classes.textField}
                     value={this.state.filter.cpf}
-                    onChange={this.onChangeCpfFilter}
+                    onChange={this.handleInputTextChange}
                     margin="normal"
                 />
-                <Button variant="contained" color="primary" 
+                <Button variant="contained" size="small" color="primary" 
                 className={classes.button} onClick={this.handlePesquisar}>
-                    <Icon className={classes.leftIcon}>send</Icon>
+                    <Icon className={classNames(classes.leftIcon, classes.iconSmall)}>search</Icon>
                     Pesquisar
 
                 </Button>
             </form>
         );
 
-
     }
 }
 
 
 
-export default withStyles()(ClienteFilter);
+export default withStyles(styles)(ClienteFilter);
 

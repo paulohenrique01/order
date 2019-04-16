@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import ClienteFilter from './ClienteFilter';
+import ClienteList from './ClienteList';
+import ClienteForm from './ClienteForm';
 
-class Cliente extends Component {
 
- 
-  render() {  
-   
+class Cliente extends Component { 
+  render() {     
     return (      
      <div>
         <p>Cadastro de clientes</p>
-        <ClienteFilter />
-     </div>
-             
+        <ClienteForm />
+        <ClienteFilter />        
+        <ClienteList/>
+     </div>    
    
     );
   }
