@@ -39,7 +39,7 @@ class ClienteFilter extends Component {
         return (
             <form className={classes.container} noValidate autoComplete="off">
                 <TextField                  
-                    label="Name"
+                    label="Nome"
                     className={classes.textField}
                     value={this.state.filter.name}
                     onChange={this.onChangeNameFilter}
